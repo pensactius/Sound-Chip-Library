@@ -1,0 +1,19 @@
+{
+	"name":"Sound Chip Library",
+	"description":"Low level library for various sound chips used in arcade/computer systems in the 80s. Supported sound chips: sn76489",
+	"keywords":"arcade, sn76489, sound",
+	"authors":
+	{
+	  "name": "pensactius",
+	  "maintainer": true
+	},
+	"repository":
+	{
+	  "type": "git",
+	  "url": "https://github.com/pensactius/Sound-Chip-Library.git"
+	},
+	"version": "0.0.1",
+	"license": "MIT",
+	"frameworks": "arduino",
+	"platforms": ["espressif32", "espressif8266"]
+  }

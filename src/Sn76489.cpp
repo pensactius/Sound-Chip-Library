@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "Sn76489.h"
 
+
 Sn76489::Sn76489(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we) :
 	m_dataBus { d7, d6, d5, d4, d3, d2, d1, d0 }, 
 	m_we { we },
@@ -25,8 +26,6 @@ Sn76489::Sn76489(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0,
 {
 	
 }
-
-
 Sn76489::~Sn76489()
 {
 
@@ -36,19 +35,7 @@ void
 Sn76489::begin()
 {
 	enableBus();
-}
-
-void
-Sn76489::dbgPrint() const
-{
-	Serial.print("Sn76489 data(d7,d6,d5,d4,d3,d2,d1,d0), (we, ce): data(");
-	for (auto data_pin: m_dataBus) {
-		Serial.print(data_pin);
-		Serial.print(",");
-	}
-	Serial.print("), (");
-	Serial.print(m_we); Serial.print(", ");
-	Serial.print(m_ce); Serial.println(")");
+	muteAll();
 }
 
 void Sn76489::writeData(uint8_t data) const
@@ -76,6 +63,11 @@ void Sn76489::writeData(uint8_t data) const
 
 }
 
+void Sn76489::writeData(uint8_t reg, uint8_t data) const
+{
+
+}
+
 void Sn76489::muteAll() const
 {
 	writeData(B10011111);
@@ -83,6 +75,22 @@ void Sn76489::muteAll() const
 	writeData(B11011111);
 	writeData(B11111111);
 }
+
+void
+Sn76489::dbgPrint() const
+{
+	Serial.print("\n[Sn76489]\t data pins {");
+	for (auto data_pin: m_dataBus) {
+		Serial.print(data_pin);
+		Serial.print(",");
+	}
+	Serial.print("} ~WE: "); Serial.print(m_we);
+	Serial.print(" ~CE: "); Serial.print(m_ce); 
+	
+	Serial.println();
+}
+
+
 /**********************************************************************+\
  * PRIVATE FUNCTIONS
 \***********************************************************************/

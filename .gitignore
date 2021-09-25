@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+.pio/build/nodemcu/firmware.bin
+.pio/build/nodemcu/firmware.elf
+.pio/build/project.checksum
+.pio/build/nodemcu/.sconsign39.dblite
+.pio/build/nodemcu/idedata.json
+.pio/build/nodemcu/ld/local.eagle.app.v6.common.ld
+src/main.cpp
+platformio.ini

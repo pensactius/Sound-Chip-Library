@@ -1,11 +1,11 @@
 /*!
  *  @file Sn76489.h
  *
- * Video Game Music Library
+ * This file is part of the Sound Chip Library, providing low level support
+ * for Sn76489 sound chips. This chip is was widely used in arcade systems,
+ * Sega machines and consumer computers in the 80s.
  *
  * Written by Andrés Mata (PensActius) 2021.
- *
- * This filel is part of the Sound Chip Library.
  *
  * MIT license, all text above must be included in any redistribution
  *

@@ -32,10 +32,10 @@
 #include <stdint.h>
 
 /*!
- *  @brief  Interface all sound chips must provide.
- *          This is a pure abstract class (aka interface) so all derived classes
- *          must provide the required interface methods.
-*/
+   @brief  Interface all sound chips must provide.
+           This is a pure abstract class (aka interface) so all derived classes
+           must provide the required interface methods.
+ */
 class ISoundChip
 {
 

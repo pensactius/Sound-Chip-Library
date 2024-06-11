@@ -41,6 +41,8 @@ public:
 		int cs, int we, int ao, int ic);
 	~Ym2413();
 
+	void initControlPins();
+
 	// Initialize Ym2413 sound chip, mostly pin modes (IN/OUT)
 	void begin();
 

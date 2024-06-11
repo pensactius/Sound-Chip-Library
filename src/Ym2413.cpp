@@ -21,6 +21,7 @@ Ym2413::Ym2413(
 void Ym2413::begin()
 {
     ISoundChip::initDataBus();
+    initControlPins();
 }
 
 void Ym2413::writeData(uint8_t data) const

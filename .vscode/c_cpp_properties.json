@@ -1,45 +1,21 @@
 {
     "configurations": [
         {
-            "name": "PlatformIO",
+            "name": "Win32",
             "includePath": [
-                "${userHome}/.platformio/packages/toolchain-xtensa-esp32/"
+                "${workspaceFolder}/**",
+                "${userHome}/.platformio/packages/toolchain-xtensa-esp32/lib/gcc/xtensa-esp32-elf/8.4.0/include",
+                "${userHome}/.platformio/packages/framework-arduinoespressif32/cores/esp32"
             ],
-            "browse": {
-                "limitSymbolsToIncludedHeaders": true,
-                "path": [
-                    ""
-                ]
-            },
             "defines": [
-                "PLATFORMIO=50200",
-                "ESP8266",
-                "ARDUINO_ARCH_ESP8266",
-                "ARDUINO_ESP8266_NODEMCU_ESP12E",
-                "F_CPU=80000000L",
-                "__ets__",
-                "ICACHE_FLASH",
-                "ARDUINO=10805",
-                "ARDUINO_BOARD=\"PLATFORMIO_NODEMCUV2\"",
-                "FLASHMODE_DIO",
-                "LWIP_OPEN_SRC",
-                "NONOSDK22x_190703=1",
-                "TCP_MSS=536",
-                "LWIP_FEATURES=1",
-                "LWIP_IPV6=0",
-                "VTABLES_IN_FLASH",
-                "MMU_IRAM_SIZE=0x8000",
-                "MMU_ICACHE_SIZE=0x8000",
-                ""
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
             ],
+            "compilerPath": "${userHome}/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-c++",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "compilerPath": "${userHome}/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-c++.exe",
-            "compilerArgs": [
-                "-mlongcalls",
-                "-mtext-section-literals",
-                ""
-            ]
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4

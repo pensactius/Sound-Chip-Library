@@ -48,7 +48,7 @@ public:
     void initDataBus();
 
     // Initialize Control pins
-    virtual void initControlPins() = 0;;
+    virtual void initControlPins() = 0;
     // Initialize sound chip, pin modes (IN/OUT), etc.
     virtual void begin() = 0;
     // Write single byte of data to sound chip

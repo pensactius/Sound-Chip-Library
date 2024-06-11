@@ -42,6 +42,9 @@ public:
 	Sn76489(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we, int ce, int rdy);
 	~Sn76489();
 
+	// Initialize Control pins
+	void initControlPins();
+
 	// Initialize Sn76489 sound chip, mostly pin modes (IN/OUT)
 	void begin();
 	
@@ -56,9 +59,6 @@ public:
 	void dbgPrint() const;
 
 private:
-	void enableBus() const;
-
-	int m_dataBus[8];
 	int m_we;
 	int m_ce;
 	int m_rdy;

@@ -32,26 +32,40 @@
 
 #include "ISoundChip.h"
 
-
 class Sn76489 : public ISoundChip
 {
-
 public:
-	Sn76489(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we, int ce, int rdy=-1);
+	/*
+	DESCRIPTION
+		Instantiate a Sn76489 sound chip object. Both ~WE and ~WE
+		are used to control data transfer, and Ready pin is used
+		to acknowledge the end of a data transfer.
+	
+	INPUT
+		d7-d0    Data pins (d0 is the most significant bit)
+		we       Write Enable pin 
+		ce       Chip Enable pin 
+		rdy      Ready pin (optional)
+
+	NOTE
+	   	Call the object's begin() function before use -- pin
+		initialization is performed there!
+	*/
+	Sn76489(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we, int ce, int rdy = -1);
+	
 	~Sn76489();
 
-	// Initialize Control pins
 	void initControlPins();
 
 	// Initialize Sn76489 sound chip, mostly pin modes (IN/OUT)
 	void begin();
-	
+
 	// Write byte of data to Sn76489 sound chip
 	void writeData(uint8_t data) const;
-	
+
 	// Not used in the Sn76489 sound chip
 	void writeData(uint8_t reg, uint8_t data) const;
-	
+
 	void muteAll() const;
 
 	void dbgPrint() const;

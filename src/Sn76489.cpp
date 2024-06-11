@@ -33,15 +33,15 @@
 
 // CONSTRUCTORS, DESTRUCTOR -------------------------------------------
 /*!
-        @brief    Instantiate a Sn76489 sound chip object. Both ~WE and ~WE
-                            are used to control data transfer, and Ready pin is used
-                            to acknowledge the end of a data transfer.
-        @param    d7-d0    Data pins (d0 is the most significant bit)
-        @param    we       Write Enable pin (active low)
-        @param    ce       Chip Enable pin (active low)
-        @param    rdy      Ready pin (active high)
-        @note     Call the object's begin() function before use -- pin
-                            initialization is performed there!
+        @brief      Instantiate a Sn76489 sound chip object. Both ~WE and ~WE
+                    are used to control data transfer, and Ready pin is used
+                    to acknowledge the end of a data transfer.
+        @param      d7-d0    Data pins (d0 is the most significant bit)
+        @param      we       Write Enable pin (active low)
+        @param      ce       Chip Enable pin (active low)
+        @param      rdy      Ready pin (active high)
+        @note       Call the object's begin() function before use -- pin
+                    initialization is performed there!
 */
 
 Sn76489::Sn76489(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we, int ce, int rdy)

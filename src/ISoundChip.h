@@ -29,6 +29,7 @@
  */
 
 #pragma once
+
 #include <stdint.h>
 
 /*!
@@ -38,17 +39,24 @@
  */
 class ISoundChip
 {
+protected:
+    int m_dataBus[8];
 
 public:
     ~ISoundChip();
+    // Initialize Databus
+    void initDataBus();
 
+    // Initialize Control pins
+    virtual void initControlPins() = 0;;
     // Initialize sound chip, pin modes (IN/OUT), etc.
     virtual void begin() = 0;
     // Write single byte of data to sound chip
     virtual void writeData(uint8_t data) const = 0;
     // Write byte of data to specified register/address in the sound chip
     virtual void writeData(uint8_t reg, uint8_t data) const = 0;
-
     // Silence all channels in the sound chip
     virtual void muteAll() const = 0;
+
+
 };

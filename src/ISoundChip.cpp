@@ -7,7 +7,7 @@
  *
  * This file only provides a default constructor. All the interface methods
  * must be provided by the derived classes.
- * 
+ *
  * Written by Andrés Mata (PensActius) 2021.
  *
  * MIT license, all text above must be included in any redistribution
@@ -31,9 +31,18 @@
  * IN THE SOFTWARE.
  */
 
+#include <Arduino.h>
 #include "ISoundChip.h"
-
 
 ISoundChip::~ISoundChip()
 {
+}
+
+void ISoundChip::initDataBus()
+{
+    // Data pins as OUTPUTs
+    for (auto pin : m_dataBus)
+    {
+        pinMode(pin, OUTPUT);
+    }
 }

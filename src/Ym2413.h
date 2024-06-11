@@ -32,35 +32,33 @@
 
 #include "ISoundChip.h"
 
-
 class Ym2413 : ISoundChip
 {
 
 public:
-	// TO-DO!!!!
-	Ym2413(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we);
-	//Ym2413(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we, int ce);
-	//Ym2413(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0, int we, int ce, int rdy);
+	Ym2413(
+		int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0,
+		int cs, int we, int ao, int ic);
 	~Ym2413();
 
 	// Initialize Ym2413 sound chip, mostly pin modes (IN/OUT)
 	void begin();
-	
+
 	// Write byte of data to Ym2413 sound chip
 	void writeData(uint8_t data) const;
-	
+
 	// Not used in the Ym2413 sound chip
 	void writeData(uint8_t reg, uint8_t data) const;
-	
+
 	void muteAll() const;
 
 	void dbgPrint() const;
 
 private:
 	void enableBus() const;
-
-	int m_dataBus[8];
+	
+	int m_cs;
 	int m_we;
-	int m_ce;
-	int m_rdy;
+	int m_ao;
+	int m_ic;
 };

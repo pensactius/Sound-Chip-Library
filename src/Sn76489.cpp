@@ -173,9 +173,7 @@ Sn76489::dbgPrint() const
 void
 Sn76489::enableBus() const
 {
-  // Data pins as OUTPUTs
-  for (auto pin : m_dataBus)
-    pinMode(pin, OUTPUT);
+  ISoundChip::initDataBus();
 
   pinMode(m_we, OUTPUT);
   

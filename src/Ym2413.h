@@ -32,7 +32,7 @@
 
 #include "ISoundChip.h"
 
-class Ym2413 : ISoundChip
+class Ym2413 : public ISoundChip
 {
 
 public:
@@ -57,8 +57,6 @@ public:
 	void dbgPrint() const;
 
 private:
-	void enableBus() const;
-	
 	int m_cs;
 	int m_we;
 	int m_ao;

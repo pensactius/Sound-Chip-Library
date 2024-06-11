@@ -13,8 +13,12 @@
 
 Ym2413::Ym2413(
     int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0,
-    int cs, int we, int ao, int ic)
-    : m_dataBus{d7, d6, d5, d4, d3, d2, d1, d0}, m_cs{cs}, m_we{we}, m_ao{ao}, m_ic{ic}
+    int cs, int we, int ao, int ic) : 
+    m_dataBus{d7, d6, d5, d4, d3, d2, d1, d0}, 
+    m_cs{cs}, 
+    m_we{we}, 
+    m_ao{ao}, 
+    m_ic{ic}
 {
 }
 

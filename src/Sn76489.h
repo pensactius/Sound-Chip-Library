@@ -33,7 +33,7 @@
 #include "ISoundChip.h"
 
 
-class Sn76489 : ISoundChip
+class Sn76489 : public ISoundChip
 {
 
 public:

@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Ym2413.h"
 
 /*!
@@ -22,21 +23,68 @@ Ym2413::Ym2413(
 {
 }
 
+void Ym2413::initControlPins()
+{
+    pinMode(m_cs, OUTPUT);
+    pinMode(m_we, OUTPUT);
+    pinMode(m_ao, OUTPUT);
+    pinMode(m_ic, OUTPUT);
+
+    // Disable chip by default (needed?)
+    digitalWrite(m_cs, 1);
+}
+
 void Ym2413::begin()
 {
     ISoundChip::initDataBus();
     initControlPins();
 }
 
-void Ym2413::writeData(uint8_t data) const
+// Not implemented in ym2413
+void Ym2413::writeData(uint8_t data)
 {
 }
 
-void Ym2413::writeData(uint8_t reg, uint8_t data) const
+// Write data to a register
+void Ym2413::writeData(uint8_t reg, uint8_t data)
 {
+    // From the datasheet
+    // CS WE A0
+    // 1  x  x  = Bus inactive
+    // 0  0  0  = Select register address
+    // 0  0  1  = Write register data
+
+    // ------------------------------------------------------
+    // Write register address
+    // ------------------------------------------------------
+    // rise edge, still nothing is sent to UC
+    digitalWrite(m_cs, 1);
+    digitalWrite(m_ao, 0);
+    writeToDataBus(reg);
+    // fall edge, data is sent to UC
+    digitalWrite(m_cs, 0);
+    // wait for 12 master clock cycles 
+    // (at 3.5Mhz that is 4 microseconds, rounded up)
+    delayMicroseconds(4);
+
+    // ------------------------------------------------------
+    // Write data
+    // ------------------------------------------------------
+    // rise edge, still nothing is sent to UC
+    digitalWrite(m_cs, 1);
+    digitalWrite(m_ao, 1);
+    writeToDataBus(data);
+    // fall edge, data is sent ot UC
+    digitalWrite(m_cs, 0);
+    // wait for 84 master clock cycles 
+    // (at 3.5Mhz is 24 microseconds, rounded up)
+    delayMicroseconds(24);
+
+    // Disable UC
+    digitalWrite(m_cs, 1);
 }
 
-void Ym2413::muteAll() const
+void Ym2413::muteAll()
 {
 }
 

@@ -61,12 +61,12 @@ public:
 	void begin();
 
 	// Write byte of data to Sn76489 sound chip
-	void writeData(uint8_t data) const;
+	void writeData(uint8_t data);
 
 	// Not used in the Sn76489 sound chip
-	void writeData(uint8_t reg, uint8_t data) const;
+	void writeData(uint8_t reg, uint8_t data);
 
-	void muteAll() const;
+	void muteAll();
 
 	void dbgPrint() const;
 

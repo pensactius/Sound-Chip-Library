@@ -34,7 +34,6 @@
 
 class Ym2413 : public ISoundChip
 {
-
 public:
 	Ym2413(
 		int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0,
@@ -45,14 +44,14 @@ public:
 
 	// Initialize Ym2413 sound chip, mostly pin modes (IN/OUT)
 	void begin();
-
-	// Write byte of data to Ym2413 sound chip
-	void writeData(uint8_t data) const;
-
+	
 	// Not used in the Ym2413 sound chip
-	void writeData(uint8_t reg, uint8_t data) const;
+	void writeData(uint8_t data);
 
-	void muteAll() const;
+	// Write data to a register
+	void writeData(uint8_t reg, uint8_t data);
+
+	void muteAll();
 
 	void dbgPrint() const;
 

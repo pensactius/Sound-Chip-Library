@@ -74,7 +74,7 @@ void Sn76489::initControlPins()
 */
 void Sn76489::begin()
 {
-    ISoundChip::initDataBus();
+    initDataBus();
     initControlPins();
     muteAll();
 }
@@ -83,19 +83,9 @@ void Sn76489::begin()
     @brief    Send a single byte of data to the sound chip.
     @param    data    Data byte to send
 */
-void Sn76489::writeData(uint8_t data) const
+void Sn76489::writeData(uint8_t data)
 {
-    // Send data through Data Bus
-    //   7  6  5  4 |  3  2  1  0
-    //   1  0  1  1 |  0  1  1  0
-    //  D0 D1 D2 D3 | D4 D5 D6 D7
-    for (int i = 0; i < 8; i++)
-    {
-        int bitValue = data & 1;
-        int dataPin = m_dataBus[i];
-        digitalWrite(dataPin, bitValue);
-        data = data >> 1;
-    }
+    writeToDataBus(data);    
 
     // CE / WE Active
     digitalWrite(m_we, LOW);
@@ -107,11 +97,11 @@ void Sn76489::writeData(uint8_t data) const
     digitalWrite(m_ce, HIGH);
 }
 
-void Sn76489::writeData(uint8_t reg, uint8_t data) const
+void Sn76489::writeData(uint8_t reg, uint8_t data)
 {
 }
 
-void Sn76489::muteAll() const
+void Sn76489::muteAll()
 {
     writeData(B10011111);
     writeData(B10111111);

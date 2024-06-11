@@ -5,7 +5,9 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${userHome}/.platformio/packages/toolchain-xtensa-esp32/lib/gcc/xtensa-esp32-elf/8.4.0/include",
-                "${userHome}/.platformio/packages/framework-arduinoespressif32/cores/esp32"
+                "${userHome}/.platformio/packages/framework-arduinoespressif32/cores/esp32",
+                "C:/Users/andres/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/**",
+                "C:/Users/andres/.platformio/packages/framework-arduinoespressif32/variants/esp32/**"
             ],
             "defines": [
                 "_DEBUG",

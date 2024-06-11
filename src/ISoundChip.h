@@ -43,6 +43,7 @@ protected:
     int m_dataBus[8];
 
 public:
+    ISoundChip(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0);
     ~ISoundChip();
     // Initialize Databus
     void initDataBus();
@@ -57,6 +58,4 @@ public:
     virtual void writeData(uint8_t reg, uint8_t data) const = 0;
     // Silence all channels in the sound chip
     virtual void muteAll() const = 0;
-
-
 };

@@ -34,6 +34,11 @@
 #include <Arduino.h>
 #include "ISoundChip.h"
 
+ISoundChip::ISoundChip(int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0)
+    : m_dataBus{d7, d6, d5, d4, d3, d2, d1, d0}
+{
+}
+
 ISoundChip::~ISoundChip()
 {
 }

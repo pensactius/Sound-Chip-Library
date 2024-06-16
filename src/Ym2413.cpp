@@ -23,6 +23,10 @@ Ym2413::Ym2413(
 {
 }
 
+Ym2413::~Ym2413()
+{
+}
+
 void Ym2413::initControlPins()
 {
     pinMode(m_cs, OUTPUT);

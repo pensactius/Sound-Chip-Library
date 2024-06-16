@@ -51,3 +51,18 @@ void ISoundChip::initDataBus()
         pinMode(pin, OUTPUT);
     }
 }
+
+void ISoundChip::writeToDataBus(uint8_t data)
+{
+    // Send data through Data Bus
+    //   7  6  5  4 |  3  2  1  0
+    //   1  0  1  1 |  0  1  1  0
+    //  D7 D6 D5 D4 | D3 D2 D1 D0
+    for (int i = 0; i < 8; i++)
+    {
+        int bitValue = data & 1;
+        int dataPin = m_dataBus[i];
+        digitalWrite(dataPin, bitValue);
+        data = data >> 1;
+    }
+}

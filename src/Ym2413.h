@@ -51,6 +51,8 @@ public:
 	// Write data to a register
 	void writeData(uint8_t reg, uint8_t data);
 
+	void reset();
+	
 	void muteAll();
 
 	void dbgPrint() const;

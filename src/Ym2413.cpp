@@ -36,6 +36,9 @@ void Ym2413::initControlPins()
 
     // Disable chip by default (needed?)
     digitalWrite(m_cs, 1);
+
+    // Reset chip (needed?)
+    reset();
 }
 
 void Ym2413::begin()
@@ -64,6 +67,7 @@ void Ym2413::writeData(uint8_t reg, uint8_t data)
     // rise edge, still nothing is sent to UC
     digitalWrite(m_cs, 1);
     digitalWrite(m_ao, 0);
+    digitalWrite(m_we, 0);
     writeToDataBus(reg);
     // fall edge, data is sent to UC
     digitalWrite(m_cs, 0);
@@ -86,6 +90,15 @@ void Ym2413::writeData(uint8_t reg, uint8_t data)
 
     // Disable UC
     digitalWrite(m_cs, 1);
+    // Disable WE
+    digitalWrite(m_we, 1);
+}
+
+void Ym2413::reset()
+{
+    digitalWrite(m_ic, 0);
+    delay(100);
+    digitalWrite(m_ic, 1);
 }
 
 void Ym2413::muteAll()

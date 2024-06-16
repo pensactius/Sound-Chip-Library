@@ -37,7 +37,7 @@ class Ym2413 : public ISoundChip
 public:
 	Ym2413(
 		int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0,
-		int cs, int we, int ao, int ic);
+		int ic, int cs, int we, int ao);
 	~Ym2413();
 
 	void initControlPins();

@@ -67,14 +67,17 @@ void Ym2413::writeData(uint8_t reg, uint8_t data)
     // ------------------------------------------------------
     // rise edge, still nothing is sent to UC
     digitalWrite(m_cs, 1);
-    digitalWrite(m_ao, 0);
-    digitalWrite(m_we, 0);
+    digitalWrite(m_ao, 0);    
     writeToDataBus(reg);
     // fall edge, data is sent to UC
     digitalWrite(m_cs, 0);
+    // Toggle !WE LOW then HIGH to latch it in the IC
     // wait for 12 master clock cycles
     // (at 3.5Mhz that is 4 microseconds, rounded up)
+    digitalWrite(m_we, 0);
     delayMicroseconds(4);
+    digitalWrite(m_we, 1);
+
 
     // ------------------------------------------------------
     // Write data
@@ -85,9 +88,12 @@ void Ym2413::writeData(uint8_t reg, uint8_t data)
     writeToDataBus(data);
     // fall edge, data is sent ot UC
     digitalWrite(m_cs, 0);
+    // Toggle !WE LOW then HIGH to latch it in the IC
     // wait for 84 master clock cycles
     // (at 3.5Mhz is 24 microseconds, rounded up)
+    digitalWrite(m_we, 0);
     delayMicroseconds(24);
+    digitalWrite(m_we, 1);
 
     // Disable UC
     digitalWrite(m_cs, 1);

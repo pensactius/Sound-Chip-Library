@@ -58,8 +58,8 @@ public:
 	void dbgPrint() const;
 
 private:
+	int m_ic;
 	int m_cs;
 	int m_we;
-	int m_ao;
-	int m_ic;
+	int m_ao;	
 };

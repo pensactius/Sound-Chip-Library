@@ -33,11 +33,13 @@ void Ym2413::initControlPins()
     pinMode(m_ao, OUTPUT);
     pinMode(m_ic, OUTPUT);
 
-    // Disable chip by default (needed?)
-    digitalWrite(m_cs, 1);
-
     // Reset chip (needed?)
     reset();
+
+    // Disable chip by default (needed?)
+    digitalWrite(m_cs, 1);
+    // Disable /we
+    digitalWrite(m_we, 1);
 }
 
 void Ym2413::begin()

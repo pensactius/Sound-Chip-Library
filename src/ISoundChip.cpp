@@ -61,7 +61,7 @@ void ISoundChip::writeToDataBus(uint8_t data)
     for (int i = 0; i < 8; i++)
     {
         int bitValue = data & 1;
-        int dataPin = m_dataBus[i];
+        int dataPin = m_dataBus[7-i];
         digitalWrite(dataPin, bitValue);
         data = data >> 1;
     }

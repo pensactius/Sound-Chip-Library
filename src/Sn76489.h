@@ -70,7 +70,7 @@ public:
 
 	void dbgPrint() const;
 
-private:
+//private:
 	int m_we;
 	int m_ce;
 	int m_rdy;

@@ -62,6 +62,9 @@ Sn76489::~Sn76489()
 void Sn76489::initControlPins()
 {
     pinMode(m_we, OUTPUT);
+    pinMode(m_ce, OUTPUT);
+    if (m_rdy != -1)
+        pinMode(m_rdy, INPUT);
 
     // Set WE and CE Inactive
     digitalWrite(m_we, 1);

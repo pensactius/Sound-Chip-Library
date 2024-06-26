@@ -30,11 +30,6 @@
 *.exe
 *.out
 *.app
-.pio/build/dev/firmware.bin
-.pio/build/dev/firmware.elf
-.pio/build/project.checksum
-.pio/build/dev/.sconsign39.dblite
-.pio/build/dev/idedata.json
-.pio/build/dev/ld/local.eagle.app.v6.common.ld
+.pio
 src/main.cpp
 platformio.ini

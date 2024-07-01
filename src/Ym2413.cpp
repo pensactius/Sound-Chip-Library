@@ -1,5 +1,5 @@
-#include <Arduino.h>
 #include "Ym2413.h"
+#include <Arduino.h>
 
 /*!
     @brief    Instantiate a Ym2413 sound chip object.
@@ -14,11 +14,12 @@
 
 Ym2413::Ym2413(
     int d7, int d6, int d5, int d4, int d3, int d2, int d1, int d0,
-    int ic, int cs, int we, int ao) : ISoundChip{d7, d6, d5, d4, d3, d2, d1, d0},
-                                      m_ic{ic},
-                                      m_cs{cs},
-                                      m_we{we},
-                                      m_ao{ao}
+    int ic, int cs, int we, int ao)
+    : ISoundChip { d7, d6, d5, d4, d3, d2, d1, d0 }
+    , m_ic { ic }
+    , m_cs { cs }
+    , m_we { we }
+    , m_ao { ao }
 {
 }
 
@@ -67,33 +68,30 @@ void Ym2413::writeData(uint8_t reg, uint8_t data)
     // ------------------------------------------------------
     // rise edge, still nothing is sent to UC
     digitalWrite(m_cs, 1);
-    digitalWrite(m_ao, 0);    
+    // Ao = 0, address write mode
+    digitalWrite(m_ao, 0);
+    // WE = 0, enable write
+    digitalWrite(m_we, 0);
+    // Send register address to bus
     writeToDataBus(reg);
     // fall edge, data is sent to UC
     digitalWrite(m_cs, 0);
-    // Toggle !WE LOW then HIGH to latch it in the IC
-    // wait for 12 master clock cycles
-    // (at 3.5Mhz that is 4 microseconds, rounded up)
-    digitalWrite(m_we, 0);
+    // wait for 12 master clock cycles, (at 3.5Mhz that is 4 microseconds, rounded up)
     delayMicroseconds(4);
-    digitalWrite(m_we, 1);
-
 
     // ------------------------------------------------------
     // Write data
     // ------------------------------------------------------
     // rise edge, still nothing is sent to UC
     digitalWrite(m_cs, 1);
+    // Ao = 1, data write mode
     digitalWrite(m_ao, 1);
+    // Send data to bus
     writeToDataBus(data);
     // fall edge, data is sent ot UC
     digitalWrite(m_cs, 0);
-    // Toggle !WE LOW then HIGH to latch it in the IC
-    // wait for 84 master clock cycles
-    // (at 3.5Mhz is 24 microseconds, rounded up)
-    digitalWrite(m_we, 0);
+    // wait for 84 master clock cycles (at 3.5Mhz is 24 microseconds, rounded up)
     delayMicroseconds(24);
-    digitalWrite(m_we, 1);
 
     // Disable UC
     digitalWrite(m_cs, 1);
@@ -115,8 +113,7 @@ void Ym2413::muteAll()
 void Ym2413::dbgPrint() const
 {
     Serial.print("\n[Ym2413]\t data pins {");
-    for (auto data_pin : m_dataBus)
-    {
+    for (auto data_pin : m_dataBus) {
         Serial.print(data_pin);
         Serial.print(",");
     }

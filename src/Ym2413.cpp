@@ -108,6 +108,19 @@ void Ym2413::reset()
 
 void Ym2413::muteAll()
 {
+    // [$30 - $38] INST/VOL
+    // Determine the voice (15 voices preset in ROM and original voices) and the volume
+    //         |7 6 5 4 |3 2 1 0|
+    // $30-$38 |INST    |VOL    |
+    //
+    for (uint8_t reg = 0x30; reg < 0x39; reg++) {
+        for (uint8_t inst = 0x0; inst < 0x10; inst++) {
+            uint8_t value = inst << 4; // INST | 0000
+            //Serial.printf("writeData(0x%02X, 0x%02X)", reg, value);
+            writeData(reg, value);
+        }
+    }
+    
 }
 
 void Ym2413::dbgPrint() const
